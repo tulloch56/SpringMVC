@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+<!--组件扫描-->
+    <context:component-scan base-package="com"/>
+    <!--配置处理器映射器和配置处理器适配器-->
+    <mvc:annotation-driven/>
+    <!--配置视图解析器-->
+    <!--InternalResourceViewResolver  JSP视图的解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--页面跳转路径的公共前缀-->
+        <property name="prefix" value="/pages/"/>
+        <!--页面跳转路径的公众后缀-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <!--配置第一个拦截器-->
+<!--        <mvc:interceptor>-->
+            <!--拦截器拦截的路径
+            批量拦截：
+            /* 表示进入springmvc中的请求，但是路径结构仅有一层
+            可以拦截 /hello.do, /test.do, /list.do
+            不能拦截 /student/list.do  /user/save.do
+            /**  表示进入到springmvc中的所有请求，无论路径结构
+            -->
+<!--            <mvc:mapping path="/**"/>-->
+            <!--告知拦截器对象-->
+<!--            <bean class="com.interceptor.Demo1Interceptor"/>-->
+<!--        </mvc:interceptor>-->
+        <!--配置第二个拦截器-->
+<!--        <mvc:interceptor>-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            <ref bean="demo2Interceptor"/>-->
+<!--        </mvc:interceptor>-->
+        <!--未登录访问拦截器-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <!--排除路径: 当前配置路径不会进入拦截器中-->
+            <mvc:exclude-mapping path="/login.do"/>
+<!--            <mvc:exclude-mapping path="/student/**"/>-->
+            <bean class="com.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+</beans>
+
+
+
+
+
+
+
+
+

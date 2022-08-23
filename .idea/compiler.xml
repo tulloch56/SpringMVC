@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springmvc03-exception" />
+        <module name="springmvc04-json" />
+        <module name="springmvc01-base" />
+        <module name="springmvc02-interceptor" />
+        <module name="springmvc05-restful" />
+        <module name="springmvc06-upload" />
+        <module name="springmvc03-ExceptionHandling" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ExceptionHandling" target="8" />
+      <module name="springmvc-restful" target="1.8" />
+      <module name="springmvc03-ExceptionHandling" target="8" />
+      <module name="springmvc03-json" target="1.8" />
+      <module name="untitled" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
